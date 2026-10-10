@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Graphing Calculator</title>
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjs@14.0.1/lib/browser/math.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/all.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-bar">
+      <div class="app-title">Graphing</div>
+      <button class="icon-button menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sideMenu" title="Menu">≡</button>
+    </header>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <aside class="side-menu" id="sideMenu" aria-hidden="true">
+      <div class="menu-title">Menu</div>
+      <section class="menu-section">
+        <button class="menu-section-toggle" id="settingsToggle" aria-expanded="false"><span>Settings</span><span class="section-arrow" id="settingsArrow">∨</span></button>
+        <div class="settings-content" id="settingsContent" hidden>
+          <div class="setting-row">
+            <span class="setting-name">Theme</span>
+            <div class="display-options">
+              <button class="display-option active" data-theme="light">L</button>
+              <button class="display-option" data-theme="dark">D</button>
+              <button class="display-option" data-theme="auto">Auto</button>
+            </div>
+          </div>
+          <div class="setting-row setting-row-spaced">
+            <span class="setting-name">Auto fraction</span>
+            <label class="switch"><input id="autoFractionToggle" type="checkbox" checked><span></span></label>
+          </div>
+        </div>
+      </section>
+      <section class="menu-section commands-section">
+        <button class="menu-section-toggle" id="commandsToggle" aria-expanded="false"><span>Commands</span><span class="section-arrow" id="commandsArrow">∨</span></button>
+        <div class="commands-content" id="commandsContent" hidden>
+          <div class="command-list">
+            <div class="command-item"><code>simplify(x)</code><span>simplify</span></div>
+            <div class="command-item"><code>expand(x)</code><span>expand</span></div>
+            <div class="command-item"><code>factor(x)</code><span>factor</span></div>
+            <div class="command-item"><code>diff(x,x)</code><span>derivative</span></div>
+            <div class="command-item"><code>integral(x,a,b)</code><span>definite integral</span></div>
+            <div class="command-item"><code>solve(x^2=4,x)</code><span>solve equation</span></div>
+            <div class="command-item"><code>limit(x,x,0)</code><span>limit</span></div>
+            <div class="command-item"><code>nPr(n,r)</code><span>permutation</span></div>
+            <div class="command-item"><code>nCr(n,r)</code><span>combination</span></div>
+            <div class="command-item"><code>factorial(n)</code><span>factorial</span></div>
+            <div class="command-item"><code>gcd(a,b)</code><span>greatest common divisor</span></div>
+            <div class="command-item"><code>lcm(a,b)</code><span>least common multiple</span></div>
+            <div class="command-item"><code>det(A)</code><span>determinant</span></div>
+            <div class="command-item"><code>inv(A)</code><span>inverse matrix</span></div>
+            <div class="command-item"><code>transpose(A)</code><span>transpose</span></div>
+            <div class="command-item"><code>trace(A)</code><span>trace</span></div>
+            <div class="command-item"><code>rank(A)</code><span>matrix rank</span></div>
+            <div class="command-item"><code>zeros(2,2)</code><span>zero matrix</span></div>
+            <div class="command-item"><code>ones(2,2)</code><span>ones matrix</span></div>
+            <div class="command-item"><code>identity(3)</code><span>identity matrix</span></div>
+            <div class="command-item"><code>dot(A,B)</code><span>dot product</span></div>
+            <div class="command-item"><code>cross(A,B)</code><span>cross product</span></div>
+            <div class="command-item"><code>norm(A)</code><span>vector/matrix norm</span></div>
+            <div class="command-item"><code>abs(x)</code><span>absolute value</span></div>
+            <div class="command-item"><code>floor(x)</code><span>floor</span></div>
+            <div class="command-item"><code>ceil(x)</code><span>ceiling</span></div>
+            <div class="command-item"><code>mod(a,b)</code><span>remainder</span></div>
+            <div class="command-item"><code>mean(A)</code><span>mean</span></div>
+            <div class="command-item"><code>median(A)</code><span>median</span></div>
+            <div class="command-item"><code>sum(A)</code><span>sum</span></div>
+            <div class="command-item"><code>prod(A)</code><span>product</span></div>
+            <div class="command-item"><code>sum(x,k,a,b)</code><span>summation</span></div>
+            <div class="command-item"><code>piecewise((x^2,x&lt;0),(x,x≥0))</code><span>piecewise function</span></div>
+            <div class="command-item"><code>parametric(x(t),y(t),a,b)</code><span>parametric curve</span></div>
+            <div class="command-item"><code>polar(r(θ),a,b)</code><span>polar curve</span></div>
+          </div>
+        </div>
+      </section>
+      <div class="menu-footer">Developed by Jay-R C. Maguad</div>
+    </aside>
+
+    <main class="app-shell">
+      <section class="graph-section">
+        <div class="section-heading"><div class="section-title">Graph</div></div>
+        <div class="graph-wrap">
+          <canvas id="graphCanvas" aria-label="Function graph"></canvas>
+          <div class="graph-controls">
+            <button class="small-control" id="zoomOut" type="button">−</button>
+            <button class="small-control" id="resetView" type="button">Reset</button>
+            <button class="small-control" id="zoomIn" type="button">+</button>
+            <button class="small-control graph-fullscreen-button" id="graphFullscreen" type="button">Fullscreen</button>
+          </div>
+          <button class="small-control graph-minimize-button" id="graphMinimize" type="button" aria-label="Minimize graph">Minimize</button>
+          <div class="grid-controls" id="gridControls" aria-label="Grid spacing controls">
+            <label>X <input id="gridX" type="number" min="0.01" step="0.01" value="1"></label>
+            <label>Y <input id="gridY" type="number" min="0.01" step="0.01" value="1"></label>
+            <button class="small-control" id="gridSquare" type="button">Square</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="expression-section">
+        <div class="section-heading expression-heading">
+          <div class="section-title">Expression</div>
+          <button class="add-expression-button" id="addExpression">+ Add</button>
+        </div>
+        <div class="expression-list" id="expressionList"></div>
+      </section>
+
+      <section class="keypad-card">
+        <div class="keypad-header">
+          <div>
+            <div class="card-title">Keypad</div>
+            <div class="card-subtitle" id="keypadName">Main keypad</div>
+          </div>
+          <div class="keypad-actions">
+            <button class="text-button keypad-switch" data-keypad="0">Main</button>
+            <button class="text-button keypad-switch" data-keypad="1">Scientific</button>
+            <button class="text-button keypad-switch" data-keypad="2">Greek</button>
+            <button class="text-button keypad-switch" data-keypad="3">Alphabet</button>
+          </div>
+        </div>
+        <div class="keypad" id="keypad"></div>
+      </section>
+
+      <div class="status-line" id="statusLine">Ready</div>
+    </main>
+  </div>
+
+  <script src="js/buttons/nPr.js"></script>
+  <script src="js/buttons/nCr.js"></script>
+  <script src="js/buttons/fact.js"></script>
+  <script src="js/buttons/integral.js"></script>
+  <script src="js/buttons/cos.js"></script>
+  <script src="js/engine/symbolic.js"></script>
+  <script src="js/engine/cas-engine.js"></script>
+  <script src="js/engine/graph-engine.js"></script>
+  <script src="js/latex/latex.js"></script>
+  <script src="js/input/input.js"></script>
+  <script src="js/output/output.js"></script>
+  <script src="js/buttons/buttons.js"></script>
+  <script>window.addEventListener('load',()=>window.GraphingCalculatorApp.init());</script>
+</body>
+</html>

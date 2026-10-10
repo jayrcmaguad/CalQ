@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for uniform. */
+.plot-wrap[data-distribution="uniform"] canvas{ }

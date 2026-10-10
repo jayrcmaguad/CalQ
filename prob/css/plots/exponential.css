@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for exponential. */
+.plot-wrap[data-distribution="exponential"] canvas{ }

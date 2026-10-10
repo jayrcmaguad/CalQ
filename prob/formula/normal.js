@@ -1,0 +1,2 @@
+import {normalCDF} from '../js/_math.js';
+export default {validate(p){if(p.sigma<=0)throw Error('σ must be positive.')},pdf(x,p){const z=(x-p.mu)/p.sigma;return Math.exp(-.5*z*z)/(p.sigma*Math.sqrt(2*Math.PI))},cdf(x,inc,p){return normalCDF((x-p.mu)/p.sigma)},domain(p){return{span:Math.max(8,8*p.sigma),min:p.mu-4*p.sigma}},plotMax(p){return 1/(p.sigma*Math.sqrt(2*Math.PI))},stats(p){return{Mean:p.mu,Variance:p.sigma*p.sigma,MGF:`e^(μt + σ²t²/2)`}}};

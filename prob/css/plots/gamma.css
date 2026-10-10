@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for gamma. */
+.plot-wrap[data-distribution="gamma"] canvas{ }

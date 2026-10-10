@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for geometric. */
+.plot-wrap[data-distribution="geometric"] canvas{ }

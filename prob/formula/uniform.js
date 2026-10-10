@@ -1,0 +1,1 @@
+export default {validate(p){if(p.b<=p.a)throw Error('Require b > a.')},pdf(x,p){return x>=p.a&&x<=p.b?1/(p.b-p.a):0},cdf(x,inc,p){return x<=p.a?(inc?0:0):x>=p.b?1:((x-p.a)/(p.b-p.a))},domain(p){return{span:Math.max(8,(p.b-p.a)*1.6),min:p.a-(p.b-p.a)*.3}},plotMax(p){return 1/(p.b-p.a)},stats(p){return{Mean:(p.a+p.b)/2,Variance:(p.b-p.a)**2/12,MGF:`(e^(bt)−e^(at))/[(b−a)t]`}}};

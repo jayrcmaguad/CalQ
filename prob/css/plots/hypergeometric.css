@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for hypergeometric. */
+.plot-wrap[data-distribution="hypergeometric"] canvas{ }

@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for discrete_uniform. */
+.plot-wrap[data-distribution="discrete_uniform"] canvas{ }

@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for normal. */
+.plot-wrap[data-distribution="normal"] canvas{ }

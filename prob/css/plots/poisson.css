@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for poisson. */
+.plot-wrap[data-distribution="poisson"] canvas{ }

@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for negative_binomial. */
+.plot-wrap[data-distribution="negative_binomial"] canvas{ }

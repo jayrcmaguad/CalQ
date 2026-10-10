@@ -1,0 +1,2 @@
+import {logGamma} from '../js/_math.js';
+export default {validate(p){if(p.lambda<=0)throw Error('λ must be positive.')},pmf(k,p){return Number.isInteger(k)&&k>=0?Math.exp(k*Math.log(p.lambda)-p.lambda-logGamma(k+1)):0},cdf(x,inc,p){let m=inc?Math.floor(x):Math.ceil(x)-1,s=0;for(let k=0;k<=Math.max(0,m);k++)s+=this.pmf(k,p);return Math.min(1,s)},domain(p){return{span:Math.max(12,p.lambda*2+8),min:0}},plotMax(p){let m=0;for(let k=0;k<Math.max(40,p.lambda*3);k++)m=Math.max(m,this.pmf(k,p));return m},stats(p){return{Mean:p.lambda,Variance:p.lambda,MGF:`e^[λ(e^t−1)]`}}};

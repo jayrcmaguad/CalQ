@@ -1,0 +1,2 @@
+/* Optional per-distribution plot styling hook for bernoulli. */
+.plot-wrap[data-distribution="bernoulli"] canvas{ }

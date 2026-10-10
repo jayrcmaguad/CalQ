@@ -1,0 +1,1 @@
+export default {validate(p){if(p.p<=0||p.p>1)throw Error('p must be in (0, 1].')},pmf(k,p){return Number.isInteger(k)&&k>=1?p.p*Math.pow(1-p.p,k-1):0},cdf(x,inc,p){let k=inc?Math.floor(x):Math.ceil(x)-1;return k<1?0:1-Math.pow(1-p.p,k)},domain(){return{span:12,min:0}},plotMax(p){return p.p},stats(p){return{Mean:1/p.p,Variance:(1-p.p)/(p.p*p.p),MGF:`p e^t / [1−(1−p)e^t]`}}};

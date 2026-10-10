@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <g stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cartesian axes -->
+    <path d="M 12 64 H 116"/>
+    <path d="M 64 116 V 12"/>
+
+    <!-- x³ curve -->
+    <path
+      d="M 30 104
+         C 48 104, 56 91, 64 64
+         C 72 37, 80 24, 98 24"
+      stroke-width="3"
+    />
+  </g>
+</svg>

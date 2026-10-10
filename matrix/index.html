@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <meta name="theme-color" content="#f4f4f4">
+
+  <title>Matrix Calculator</title>
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="app-bar">
+
+    <div class="app-title">
+      Matrix
+    </div>
+
+    <button
+      id="menuButton"
+      class="menu-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="sideMenu"
+    >≡</button>
+
+  </header>
+
+
+  <!-- ===== MENU BACKDROP ===== -->
+  <div
+    id="menuBackdrop"
+    class="menu-backdrop"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- ===== MENU ===== -->
+  <aside
+    id="sideMenu"
+    class="side-menu"
+    aria-hidden="true"
+  >
+
+    <div class="menu-title">
+      Menu
+    </div>
+
+
+    <!-- ===== SETTINGS ===== -->
+    <section class="menu-section">
+
+      <button
+        id="settingsToggle"
+        class="menu-section-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="settingsContent"
+      >
+
+        <span>
+          Settings
+        </span>
+
+        <span class="section-arrow" aria-hidden="true">
+          ∨
+        </span>
+
+      </button>
+
+
+      <div
+        id="settingsContent"
+        class="settings-content"
+        hidden
+      >
+
+        <div class="setting-row">
+
+          <span class="setting-name">
+            Display
+          </span>
+
+          <div class="display-options">
+
+            <button
+              type="button"
+              class="display-option"
+              data-theme="light"
+            >
+              L
+            </button>
+
+            <button
+              type="button"
+              class="display-option"
+              data-theme="dark"
+            >
+              D
+            </button>
+
+            <button
+              type="button"
+              class="display-option"
+              data-theme="auto"
+            >
+              Auto
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===== COMMANDS ===== -->
+    <section class="menu-section commands-section">
+
+      <button
+        id="commandsToggle"
+        class="menu-section-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="commandsContent"
+      >
+
+        <span>
+          Commands
+        </span>
+
+        <span class="section-arrow" aria-hidden="true">
+          ∨
+        </span>
+
+      </button>
+
+
+      <div
+        id="commandsContent"
+        class="commands-content"
+        hidden
+      >
+
+        <div class="command-list">
+
+          <div class="command-item">
+            <code>+</code>
+            <span>Add</span>
+          </div>
+
+          <div class="command-item">
+            <code>-</code>
+            <span>Subtract</span>
+          </div>
+
+          <div class="command-item">
+            <code>*</code>
+            <span>Multiply</span>
+          </div>
+
+          <div class="command-item">
+            <code>2A</code>
+            <span>Scalar multiply</span>
+          </div>
+
+          <div class="command-item">
+            <code>^T</code>
+            <span>Transpose</span>
+          </div>
+
+          <div class="command-item">
+            <code>^n</code>
+            <span>Matrix power</span>
+          </div>
+
+          <div class="command-item">
+            <code>det(A)</code>
+            <span>Determinant</span>
+          </div>
+
+          <div class="command-item">
+            <code>inv(A)</code>
+            <span>Inverse</span>
+          </div>
+
+          <div class="command-item">
+            <code>ref(A)</code>
+            <span>REF</span>
+          </div>
+
+          <div class="command-item">
+            <code>rref(A)</code>
+            <span>RREF</span>
+          </div>
+
+          <div class="command-item">
+            <code>rank(A)</code>
+            <span>Rank</span>
+          </div>
+
+          <div class="command-item">
+            <code>trace(A)</code>
+            <span>Trace</span>
+          </div>
+
+          <div class="command-item">
+            <code>cofactor(A)</code>
+            <span>Cofactor</span>
+          </div>
+
+          <div class="command-item">
+            <code>adj(A)</code>
+            <span>Adjugate</span>
+          </div>
+
+          <div class="command-item">
+            <code>eigenvalues(A)</code>
+            <span>Eigenvalues</span>
+          </div>
+
+          <div class="command-item">
+            <code>eigenvectors(A)</code>
+            <span>Eigenvectors</span>
+          </div>
+
+          <div class="command-item">
+            <code>I</code>
+            <span>Identity</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===== DEVELOPER CREDIT ===== -->
+    <div class="menu-footer">
+      Developed by Jay-R C. Maguad
+    </div>
+
+  </aside>
+
+
+  <!-- ===== MAIN ===== -->
+  <main class="app-shell">
+
+    <!-- ===== EXPRESSION ===== -->
+    <section class="expression-panel">
+
+      <div class="expression-row">
+
+        <input
+          id="expressionInput"
+          class="expression-input"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Matrix expression"
+          placeholder="Enter matrix expression"
+        >
+
+        <button
+          id="calculateButton"
+          class="calculate-button"
+          type="button"
+        >
+          Calculate
+        </button>
+
+      </div>
+
+      <div
+        id="errorMessage"
+        class="error-message"
+        aria-live="polite"
+      ></div>
+
+    </section>
+
+
+    <!-- ===== MATRICES ===== -->
+    <section class="card matrices-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Matrices
+          </h2>
+
+          <p>
+            Define matrix variables
+          </p>
+
+        </div>
+
+        <button
+          id="addMatrixButton"
+          class="add-button"
+          type="button"
+        >
+          + Add
+        </button>
+
+      </div>
+
+
+      <div
+        id="matricesContainer"
+        class="matrices-container"
+      ></div>
+
+
+      <div
+        id="emptyMatrices"
+        class="empty-state"
+      >
+
+      </div>
+
+    </section>
+
+
+    <!-- ===== RESULT ===== -->
+    <section class="card result-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Result
+          </h2>
+
+          <p>
+            Calculation output
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="resultContainer"
+        class="result-container"
+      ></div>
+
+    </section>
+
+
+    <!-- ===== HISTORY ===== -->
+    <section class="card history-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            History
+          </h2>
+
+          <p>
+            Recent calculations
+          </p>
+
+        </div>
+
+        <button
+          id="clearHistoryButton"
+          class="text-button"
+          type="button"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        id="historyContainer"
+        class="history-container"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

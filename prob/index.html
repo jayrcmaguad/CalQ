@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Probability Distribution Calculator</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="app-bar">
+  <div class="app-title">Probability</div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">≡</button>
+</header>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="side-menu" id="sideMenu" aria-hidden="true">
+  <div class="menu-title">Menu</div>
+  <section class="menu-section">
+    <button class="menu-section-toggle" id="settingsToggle">Settings <span class="section-arrow" id="settingsArrow">⌄</span></button>
+    <div class="settings-content" id="settingsContent" hidden>
+      <div class="setting-row"><span class="setting-name">Theme</span><div class="display-options">
+        <button class="display-option" data-theme="light">L</button>
+        <button class="display-option" data-theme="dark">D</button>
+        <button class="display-option active" data-theme="auto">Auto</button>
+      </div></div>
+    </div>
+  </section>
+  <section class="menu-section commands-section">
+    <button class="menu-section-toggle" id="helpToggle">Graph controls <span class="section-arrow" id="helpArrow">⌄</span></button>
+    <div class="commands-content" id="helpContent" hidden>
+      <div class="command-list">
+        <div class="command-item"><code>Wheel / + −</code><span>Zoom</span></div>
+        <div class="command-item"><code>Drag</code><span>Pan horizontally</span></div>
+        <div class="command-item"><code>R</code><span>Reset view</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="menu-footer">Developed by Jay-R C. Maguad</div>
+</aside>
+<main class="app-shell">
+  <section class="card setup-card">
+    <div class="card-header"><div><h2>Distribution</h2><p>Select a discrete or continuous probability model.</p></div></div>
+    <div class="control-grid">
+      <label class="field"><span>Choose distribution</span><select id="distributionSelect"></select></label>
+      <div class="type-badge" id="typeBadge">Discrete</div>
+    </div>
+    <div id="parameterForm" class="parameter-grid"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-header"><div><h2>Plots</h2><p>Drag horizontally. Use wheel, +, or − to zoom.</p></div><div class="plot-tools"><button class="text-button" id="zoomOut">−</button><button class="text-button" id="zoomIn">+</button><button class="text-button" id="resetView">Reset</button></div></div>
+    <div class="plot-wrap" id="plotWrap"><canvas id="plotCanvas"></canvas><div class="plot-hint" id="plotHint">Drag to pan</div></div>
+  </section>
+
+  <section class="card">
+    <div class="card-header"><div><h2>Probability Calculator</h2><p>Enter a value or interval. Boundary behavior depends on the selected operator.</p></div></div>
+    <div class="probability-grid">
+      <label class="field"><span>Event</span><select id="eventSelect"></select></label>
+      <label class="field" id="lowerField"><span>Lower x</span><input id="lowerInput" type="number" step="any"></label>
+      <label class="field" id="upperField"><span>Upper x</span><input id="upperInput" type="number" step="any"></label>
+      <button class="calculate-button" id="calculateProbability">Calculate</button>
+    </div>
+    <div class="probability-result" id="probabilityResult">—</div>
+  </section>
+
+  <section class="card stats-card">
+    <div class="card-header"><div><h2>Statistics</h2><p>Analytical properties of the selected distribution.</p></div></div>
+    <div class="stats-grid" id="statsGrid"></div>
+  </section>
+</main>
+<script type="module" src="./js/script.js"></script>
+</body>
+</html>

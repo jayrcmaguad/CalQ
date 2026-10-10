@@ -1,0 +1,1 @@
+export default {validate(p){if(p.p<0||p.p>1)throw Error('p must be between 0 and 1.')},pmf(k,p){return k===1?p.p:k===0?1-p.p:0},cdf(x,inc,p){if(x<0)return 0;if(x<1)return inc?1-p.p:0;return 1},domain(){return{span:5,min:-2}},plotMax(){return 1},stats(p){return{Mean:p.p,Variance:p.p*(1-p.p),MGF:`1−p+p e^t`}}};

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="816" height="1056"
+     viewBox="-1200 -1200 23990 30340"
+     fill="none"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <defs>
+    <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#555555"/>
+      <stop offset="50%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#555555"/>
+    </linearGradient>
+
+    <linearGradient id="faceGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E0E0E0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#808080" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="rotate(-8 10795 13970)"
+   stroke="#000000"
+   stroke-width="500">
+
+    <path
+      d="M9218 27552
+         L20543 24793
+         L15802 10454
+         L10308 294
+         L3686 10527
+         L1090 24538 Z"
+      fill="url(#faceGradient)"/>
+
+    <path d="M10308 294 L11363 8473 L1090 24538"/>
+    <path d="M11363 8473 L20543 24793"/>
+    <path d="M15802 10454 L9218 27552"/>
+    <path d="M9218 27552 L3686 10527"/>
+    <path d="M11363 8473 L3686 10527"/>
+  </g>
+</svg>

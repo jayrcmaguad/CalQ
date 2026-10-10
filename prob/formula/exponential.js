@@ -1,0 +1,1 @@
+export default {validate(p){if(p.lambda<=0)throw Error('λ must be positive.')},pdf(x,p){return x<0?0:p.lambda*Math.exp(-p.lambda*x)},cdf(x,inc,p){return x<=0?0:1-Math.exp(-p.lambda*x)},domain(p){return{span:Math.max(8,8/p.lambda),min:-1/p.lambda}},plotMax(p){return p.lambda},stats(p){return{Mean:1/p.lambda,Variance:1/(p.lambda*p.lambda),MGF:`λ/(λ−t), t<λ`}}};
